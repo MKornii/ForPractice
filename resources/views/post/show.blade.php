@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('title')
-    Posts
+    Post
 @endsection
 @section('content')
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,11 +18,23 @@
         </div>
     </nav>
     <div>
-        <div>
-            <a href="{{ route('posts.create') }}" class="btn btn-primary mb-3">Create</a>
-        </div>
-        @foreach($posts as $post)
-            <div><a href="{{ route('posts.show', $post->id) }}">{{ $post->id }}.{{ $post->title }}</a></div>
-        @endforeach
+
+        <div>{{ $post->id }}.{{ $post->title }}</div>
+        <div>{{ $post->content }}</div>
+
+    </div>
+    <div>
+        <a href="{{ route('posts.edit', $post->id) }}">Edit</a>
+    </div>
+    <div>
+        <form action="{{ route('posts.delete', $post->id) }}" method="post">
+            @csrf
+            @method('delete')
+        <input type="submit" value="Delete" class="btn btn-danger">
+        </form>
+
+    </div>
+    <div>
+        <a href="{{ route('posts.index') }}" class="btn btn-primary mt-3">Back</a>
     </div>
 @endsection

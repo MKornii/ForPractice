@@ -1,6 +1,6 @@
 @extends('layout.layout')
 @section('title')
-    Create
+    Edit
 @endsection
 @section('content')
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -18,21 +18,22 @@
         </div>
     </nav>
     <div>
-        <form action="{{ route('posts.store') }}" method="post">
+        <form action="{{ route('posts.update', $post->id) }}" method="post">
           @csrf
+          @method('patch')
             <div class="form-group mb-4">
                 <label for="title" class="mb-2">Title</label>
-                <input type="text"  name="title" class="form-control" id="title" placeholder="Title">
+                <input type="text"  name="title" class="form-control" id="title" placeholder="Title" value="{{ $post->title }}">
             </div>
             <div class="form-group mb-4">
                 <label for="content" class="mb-2">Content</label>
-                <textarea class="form-control" name="content" id="content" placeholder="Content"></textarea>
+                <textarea class="form-control" name="content" id="content" placeholder="Content" >{{ $post->content }}</textarea>
             </div>
             <div class="form-group mb-4">
                 <label for="image" class="mb-2">Image</label>
-                <input type="text" class="form-control" name="image" id="image" placeholder="Image">
+                <input type="text" class="form-control" name="image" id="image" placeholder="Image" value="{{ $post->image }}">
             </div>
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection

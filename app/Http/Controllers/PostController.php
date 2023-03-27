@@ -26,22 +26,34 @@ class PostController extends Controller
         Post::create($data);
         return redirect()->route('posts.index');
     }
-    public function show()
+    public function show(Post $post)
     {
 
+        return view('post.show', compact('post'));
     }
-    public function update(){
-        $post = Post::find(7);
-        $post->update([
-            'title' => 'Title updated',
-            'content' => 'Some updated content',
-            'image' => 'updatedimage.jpg',
-            'is_publised' => 1,
-        ]);
-    }
-    public function delete(){
+    public function edit(Post $post)
+    {
+        return view('post.edit', compact('post'));
 
-        $post = Post::find(8);
+    }
+
+    public function update(Post $post)
+    {
+        $data = request()->validate([
+            'title'=>'string|required',
+            'content'=>'string|required',
+            'image'=>'string',
+        ]);
+        $post->update($data);
+        return redirect()->route('posts.show', $post->id);
+
+
+    }
+    public function destroy(Post $post)
+    {
         $post->delete();
+        return redirect()->route('posts.index');
+
+
     }
 }
