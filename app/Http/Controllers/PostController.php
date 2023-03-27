@@ -8,31 +8,30 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     public function index(){
-        return view('posts');
+        $posts = Post::all();
+        return view('post.index', compact('posts'));
     }
-    public function create(){
-        $postArr = [
-            [
-                'title' => 'Title ',
-                'content' => 'Some content',
-                'image' => 'image.jpg',
-                'is_publised' => 1,
-            ],
-            [
-                'title' => 'Title another',
-                'content' => 'Some another content',
-                'image' => 'anotherimage.jpg',
-                'is_publised' => 1,
-            ],
-        ];
-        foreach ($postArr as $item) {
+    public function create()
+    {
+        return view('post.create');
 
-            Post::create($item);
-        }
-        dd('created');
+    }
+    public function store()
+    {
+        $data = request()->validate([
+            'title'=>'string|required',
+            'content'=>'string|required',
+            'image'=>'string',
+            ]);
+        Post::create($data);
+        return redirect()->route('posts.index');
+    }
+    public function show()
+    {
+
     }
     public function update(){
-        $post = Post::find(4);
+        $post = Post::find(7);
         $post->update([
             'title' => 'Title updated',
             'content' => 'Some updated content',
@@ -42,7 +41,7 @@ class PostController extends Controller
     }
     public function delete(){
 
-        $post = Post::find(2);
+        $post = Post::find(8);
         $post->delete();
     }
 }
