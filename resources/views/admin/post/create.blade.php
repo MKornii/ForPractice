@@ -20,11 +20,11 @@
                 <textarea id="summernote" name="content" placeholder="Контент"></textarea>
             </div>
             <div class="form-group w-50">
-                <label for="exampleInputFile">Добавте зображення</label>
+                <label for="image">Добавте зображення</label>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image">
-                        <label class="custom-file-label" for="exampleInputFile">Виберіть файл</label>
+                        <label class="custom-file-label" for="image">Виберіть файл</label>
                     </div>
                     <div class="input-group-append">
                         <span class="input-group-text">Завантажити</span>

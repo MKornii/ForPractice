@@ -16,28 +16,24 @@
                 <input type="text" name="title" class="form-control" id="title" placeholder="Заголовок"
                        value="{{ $post->title }}">
             </div>
-            @error('title')
-            <div class="text-danger">Необхідно заповнити</div>
-            @enderror
             <div class="form-group mb-4">
                 <label for="title" class="mb-2">Короткий опис</label>
-                <input type="text" name="title" class="form-control" id="title" placeholder="Короткий опис"
+                <input type="text" name="short_content" class="form-control" id="short_content" placeholder="Короткий опис"
                        value="{{ $post->short_content }}">
             </div>
             <div class="form-group mb-4">
                 <label for="content" class="mb-2">Контент</label>
-                <textarea id="summernote" name="content" placeholder="Контент" value="{{ $post->content }}"></textarea>
+                <textarea id="summernote" name="content" placeholder="Контент">{{ $post->content }}</textarea>
             </div>
             <div class="w-15">
-                <img src="{{ asset('storage/'.$post->image) }}">
-
+                <img src="{{ url('storage/' . $post->image) }}">
             </div>
             <div class="form-group w-50">
-                <label for="exampleInputFile">Змініть зображення</label>
+                <label for="image">Змініть зображення</label>
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image">
-                        <label class="custom-file-label" for="exampleInputFile" value="{{ $post->image }}">Виберіть файл</label>
+                        <label class="custom-file-label" for="image">Виберіть файл</label>
                     </div>
                     <div class="input-group-append">
                         <span class="input-group-text">Завантажити</span>

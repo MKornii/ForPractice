@@ -25,7 +25,7 @@ class PostController extends Controller
             'content'=>'string|required',
             'image'=>'file',
             ]);
-       $data['image'] = Storage::put('/images', $data['image']);
+       $data['image'] = Storage::disk('public')->put('/images', $data['image']);
 
         Post::firstOrCreate($data);
         return redirect()->route('posts.index')
@@ -50,7 +50,10 @@ class PostController extends Controller
             'content'=>'string',
             'image'=>'file',
         ]);
+        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
+
         $post->update($data);
+
         return redirect()->route('posts.show', $post->id);
 
 

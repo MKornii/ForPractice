@@ -1,6 +1,6 @@
 @extends('admin.layout.layout')
 @section('title')
-    Post
+    Новина
 @endsection
 
 @section('content')
@@ -23,20 +23,20 @@
                 </div>
 
         <div class="row">
-        <div class="mr-2">
-            <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-        </div>
-        <div class="mr-2">
+            <div class="mr-2">
+                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+            </div>
+            <div class="mr-2">
             <form action="{{ route('posts.delete', $post->id) }}" method="post">
                 @csrf
                 @method('delete')
                 <input type="submit" value="Delete" class="btn btn-danger">
             </form>
 
-        </div>
-        <div>
-            <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
-        </div>
+            </div>
+             <div>
+                  <a href="{{ route('posts.index') }}" class="btn btn-primary">Back</a>
+             </div>
         </div>
         </div>
     </section>
