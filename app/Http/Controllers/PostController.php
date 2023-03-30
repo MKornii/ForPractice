@@ -23,7 +23,7 @@ class PostController extends Controller
             'title'=>'string|required',
             'short_content'=>'string|required',
             'content'=>'string|required',
-            'image'=>'file',
+            'image'=>'file|required',
             ]);
        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
 
@@ -45,10 +45,10 @@ class PostController extends Controller
     public function update(Post $post)
     {
         $data = request()->validate([
-            'title'=>'string',
-            'short_content'=>'string',
-            'content'=>'string',
-            'image'=>'file',
+            'title'=>'string|required',
+            'short_content'=>'string|required',
+            'content'=>'string|required',
+            'image'=>'file|required',
         ]);
         $data['image'] = Storage::disk('public')->put('/images', $data['image']);
 

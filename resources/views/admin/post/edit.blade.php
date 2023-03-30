@@ -11,6 +11,13 @@
         <form action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
             @csrf
             @method('patch')
+            <ul>
+                @foreach($errors->all() as $message)
+                    <li class="text-danger">
+                        {{ $message }}
+                    </li>
+                @endforeach
+            </ul>
             <div class="form-group mb-4">
                 <label for="title" class="mb-2">Заголовок</label>
                 <input type="text" name="title" class="form-control" id="title" placeholder="Заголовок"

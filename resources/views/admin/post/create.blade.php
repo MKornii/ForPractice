@@ -8,6 +8,13 @@
         <h1 class="mb-4 align-center">Створіть новину</h1>
         <form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data" >
             @csrf
+            <ul>
+                @foreach($errors->all() as $message)
+                    <li class="text-danger">
+                        {{ $message }}
+                    </li>
+                @endforeach
+            </ul>
             <div class="form-group mb-4">
                 <input type="text" name="title" class="form-control w-25" id="title" placeholder="Заголовок">
             </div>
