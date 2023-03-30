@@ -11,7 +11,7 @@
                     <h1 class="mb-5">{{ $post->title }}</h1>
                     <div class="post">
                         <div class="post-image mb-5">
-                            <img src="{{ asset('storage/'.$post->image) }}">
+                            <img src="{{ asset('storage/'.$post->image) }}" class="w-50">
                         </div>
                     </div>
 

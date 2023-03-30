@@ -25,8 +25,8 @@
                 <label for="content" class="mb-2">Контент</label>
                 <textarea id="summernote" name="content" placeholder="Контент">{{ $post->content }}</textarea>
             </div>
-            <div class="w-15">
-                <img src="{{ url('storage/' . $post->image) }}">
+            <div class="w-25">
+                <img src="{{ url('storage/' . $post->image) }}" class="w-50">
             </div>
             <div class="form-group w-50">
                 <label for="image">Змініть зображення</label>
