@@ -53,6 +53,8 @@
         @include('admin.layout.footer')
 
         <!-- ./wrapper -->
+    </div>
+</div>
 
         <!-- REQUIRED SCRIPTS -->
         <!-- jQuery -->

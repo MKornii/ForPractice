@@ -28,12 +28,10 @@ class PostController extends Controller
        $data['image'] = Storage::disk('public')->put('/images', $data['image']);
 
         Post::firstOrCreate($data);
-        return redirect()->route('posts.index')
-            ;
+        return redirect()->route('posts.index');
     }
     public function show(Post $post)
     {
-
         return view('admin.post.show', compact('post'));
     }
     public function edit(Post $post)

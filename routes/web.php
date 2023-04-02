@@ -3,19 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PostController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/main', [MainController::class, 'index'])->name('main.index');
-Route::get('/welcome', function (){
-    return view ('auth.login');
-});
+Route::get('/main/{main}', [MainController::class, 'show'])->name('show.index');
 
-
-
-
-
-Route::get('/posts/update', [PostController::class, 'update']);
-Route::get('/posts/delete', [PostController::class, 'delete']);
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'], function () {
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login']);
@@ -31,12 +24,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Admin', 'prefix' => 'admin'],
         Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
         Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
         Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.delete');
+
+
+        Route::get('/posts/update', [PostController::class, 'update']);
+        Route::get('/posts/delete', [PostController::class, 'delete']);
     });
-
-
     });
-
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
